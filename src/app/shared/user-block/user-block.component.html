@@ -1,0 +1,8 @@
+<button (click)="isVisible = !isVisible">Open Users</button>
+<ul class="users-block" *ngIf="isVisible">
+    <li *ngFor="let user of users; let e = even; trackBy:trackById" (click)="remove(user)">
+        <span [ngClass]="{online: user.status === 'online', offline: user.status === 'offline'}"></span>
+        <span>{{user.username}}</span>
+        <span [ngStyle]="styling(e)"> Even: {{e}}</span>
+    </li>
+</ul>
