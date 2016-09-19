@@ -2,7 +2,7 @@
 <ul class="users-block" *ngIf="isVisible">
     <li *ngFor="let user of users; let e = even; trackBy:trackById" (click)="remove(user)">
         <span [ngClass]="{online: user.status === 'online', offline: user.status === 'offline'}"></span>
-        <span>{{user.username}}</span>
+        <span>{{ user.username | lowercase }}</span>
         <span [ngStyle]="styling(e)"> Even: {{e}}</span>
     </li>
 </ul>
@@ -13,7 +13,6 @@
         <span [ngStyle]="styling(e)"> Even: {{e}}</span>
     </li>
 </ul>
-
 <ul class="filter-block" *ngIf="finished">
     <li *ngFor="let filter of filters.makes; let e = even;" (click)="selectFilter(filter,'make')">
         <span>{{filter.id}}</span>
@@ -35,3 +34,4 @@
         <span [ngStyle]="styling(e)"> Even: {{e}}</span>
     </li>
 </ul>
+<div> {{ results | json }}</div>
