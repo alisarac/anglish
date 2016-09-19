@@ -10,6 +10,7 @@ const appRoutes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'users/:user', component: UserBlockComponent },
   { path: 'users', component: UserBlockComponent },
   { path: '**', component: HomeComponent }
 ];
