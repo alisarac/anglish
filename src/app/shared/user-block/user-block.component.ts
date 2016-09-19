@@ -1,22 +1,42 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { UserService } from '../services/user.service';
+import { ApiService } from '../services/api.service';
+
+
+interface IFilterOption {
+    id: number,
+    name: string
+}
 
 @Component({
+    providers: [UserService, ApiService],
     selector: 'app-user-block',
     templateUrl: './user-block.component.html',
     styleUrls: ['./user-block.component.css']
 })
 
-export class UserBlockComponent{
-    public users = [
-        { id: 1, username: 'filip.lauc93@gmail.com', status: 'online' },
-        { id: 2, username: 'laco0416@gmail.com', status: 'offline' },
-        { id: 3, username: 'mgualtieri7@gmail.com', status: 'online' },
-        { id: 4, username: 'ran.wahle@gmail.com', status: 'online' },
-        { id: 5, username: 'wojtek.kwiatek@gmail.com', status: 'offline' }
-    ];
+export class UserBlockComponent implements OnInit {
+    constructor (
+      private _userService: UserService,
+      private _api: ApiService
+    ) {
 
+    }
+    public users ;
+    public filters: { [id: string] : IFilterOption; } = {};
+    public results;
+    public searchParameters: { [id: string] : string|number; } = {};
+    public finished: boolean = false;
     public isVisible: boolean = false;
 
+    ngOnInit(){
+      this.users = this._userService.get();
+      this._api.send('filters',{}).subscribe(
+          res => this.filters = res,
+          err => console.log(err),
+          () => this.finished = true
+      );
+    }
     styling(even) {
         return {
             'background': even ? '#8ff76f' : '#6fccf7',
@@ -33,5 +53,19 @@ export class UserBlockComponent{
     remove(user){
         console.log(user.username + " will be removed");
         this.users = this.users.filter((obj) => obj.id != user.id);
+    }
+
+    selectFilter(filter: IFilterOption,name: string){
+        this.searchParameters[name] = filter.id;
+        this.search();
+        console.log(filter.id + ":" + filter.name + " is selected");
+    }
+
+    search(){
+        this._api.send('search',this.searchParameters).subscribe(
+            res => this.results = res.data,
+            err => console.log(err),
+            () => this.finished = true
+        );
     }
 }

@@ -6,3 +6,32 @@
         <span [ngStyle]="styling(e)"> Even: {{e}}</span>
     </li>
 </ul>
+<ul class="filter-block" *ngIf="finished">
+    <li *ngFor="let result of results; let e = even;">
+        <span>{{result.id}}</span>
+        <span>{{result.title}}</span>
+        <span [ngStyle]="styling(e)"> Even: {{e}}</span>
+    </li>
+</ul>
+
+<ul class="filter-block" *ngIf="finished">
+    <li *ngFor="let filter of filters.makes; let e = even;" (click)="selectFilter(filter,'make')">
+        <span>{{filter.id}}</span>
+        <span>{{filter.name}}</span>
+        <span [ngStyle]="styling(e)"> Even: {{e}}</span>
+    </li>
+</ul>
+<ul class="filter-block" *ngIf="finished">
+    <li *ngFor="let filter of filters.fuels; let e = even;" (click)="selectFilter(filter,'fuel')">
+        <span>{{filter.id}}</span>
+        <span>{{filter.name}}</span>
+        <span [ngStyle]="styling(e)"> Even: {{e}}</span>
+    </li>
+</ul>
+<ul class="filter-block" *ngIf="finished">
+    <li *ngFor="let filter of filters.gears; let e = even;" (click)="selectFilter(filter,'gear')">
+        <span>{{filter.id}}</span>
+        <span>{{filter.name}}</span>
+        <span [ngStyle]="styling(e)"> Even: {{e}}</span>
+    </li>
+</ul>

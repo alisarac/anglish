@@ -4,5 +4,11 @@
 <p>{{hw}}</p>
 <input type="text" [(ngModel)]="count">
 <button [class]="hwClass" (click)="sayHello()">Say Hi!</button>
-
-<app-user-block></app-user-block>
+<h1>Angular Router</h1>
+<nav>
+  <a routerLink="/" routerLinkActive="active">Home</a>
+  <a routerLink="/users" routerLinkActive="active">Users</a>
+  <a routerLink="/login" routerLinkActive="active">Login</a>
+  <a routerLink="/signup" routerLinkActive="active">Signup</a>
+</nav>
+<router-outlet></router-outlet>
