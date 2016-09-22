@@ -56,7 +56,11 @@ export class UserBlockComponent implements OnInit {
     }
 
     selectFilter(filter: IFilterOption,name: string){
-        this.searchParameters[name] = filter.id;
+        if(this.searchParameters[name] != null && filter.id == this.searchParameters[name]){
+          delete(this.searchParameters[name]);
+        }else{
+          this.searchParameters[name] = filter.id;
+        }
         this.search();
         console.log(filter.id + ":" + filter.name + " is selected");
     }
