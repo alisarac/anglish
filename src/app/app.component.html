@@ -12,4 +12,7 @@
   <a routerLink="/login" routerLinkActive="active">Login</a>
   <a routerLink="/signup" routerLinkActive="active">Signup</a>
 </nav>
+<input type="text" id="km" name="km" [(ngModel)]="form.km" placeholder="KM Bilgisini Giriniz"/>
+<div>{{ form | json }}</div>
+<div>{{ count }}</div>
 <router-outlet></router-outlet>

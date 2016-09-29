@@ -1,16 +1,18 @@
 <button (click)="isVisible = !isVisible">Open Users</button>
 <ul class="users-block" *ngIf="isVisible">
     <li *ngFor="let user of users; let e = even; trackBy:trackById" (click)="remove(user)">
-        <span [ngClass]="{online: user.status === 'online', offline: user.status === 'offline'}"></span>
-        <span>{{ user.username | lowercase }}</span>
+        <span [ngClass]="{online: user.value.status === 'online', offline: user.value.status === 'offline'}"></span>
+        <span>{{ user.value.username | lowercase }}</span>
         <span [ngStyle]="styling(e)"> Even: {{e}}</span>
     </li>
 </ul>
-<ul class="filter-block" *ngIf="finished">
+<ul class="filter-block" *ngIf="finished" infinite-scroll
+            [infiniteScrollDistance]="2"
+            [infiniteScrollThrottle]="500"
+            (scrolled)="nextPage()">
     <li *ngFor="let result of results; let e = even;">
         <span>{{result.id}}</span>
         <span>{{result.title}}</span>
-        <span [ngStyle]="styling(e)"> Even: {{e}}</span>
     </li>
 </ul>
 <ul class="filter-block" *ngIf="finished">
@@ -34,4 +36,26 @@
         <span [ngStyle]="styling(e)"> Even: {{e}}</span>
     </li>
 </ul>
+<ul class="filter-block" *ngIf="finished">
+    <li *ngFor="let filter of filters.years; let e = even;" (click)="selectFilter(filter,'year')">
+        <span>{{filter.id}}</span>
+        <span>{{filter.name}}</span>
+    </li>
+</ul>
+<ul class="filter-block" *ngIf="finished">
+    <li *ngFor="let filter of filters.years; let e = even;" (click)="getCategories(0, {id:3530,name:'araclar'})">
+        <span>{{filter.id}}</span>
+        <span>{{filter.name}}</span>
+    </li>
+</ul>
+
+<div id="formCategories"> {{ formCategories | json }}</div>
+<ul class="filter-block" *ngFor="let category of formCategories; let i = index">
+    <span>{{i+1}}</span>
+    <li *ngFor="let filter of category; let e = even;" (click)="getCategories(i+1, filter)">
+        <span>{{filter.id}}</span>
+        <span>{{filter.name}}</span>
+    </li>
+</ul>
+
 <div> {{ results | json }}</div>

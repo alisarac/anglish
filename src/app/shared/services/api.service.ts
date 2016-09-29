@@ -30,6 +30,14 @@ export class ApiService {
                 url = 'http://api.ogaraj.com/api/ads';
                 type = RequestMethod.Get;
                 break;
+            case 'categories':
+                url = 'http://api.ogaraj.com/api/subcategories';
+                type = RequestMethod.Get;
+                break;
+            case 'features':
+                url = 'http://api.ogaraj.com/api/modelfeatures';
+                type = RequestMethod.Get;
+                break;
             // All we need to do to handle new API calls is add them inside of this switch statement
         }
 

@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { InfiniteScrollModule } from 'angular2-infinite-scroll';
 
 import { AppComponent } from './app.component';
 import { routing, appRoutingProviders }  from './app.routing';
@@ -22,7 +23,8 @@ import { LoginComponent } from './pages/login/login.component';
     BrowserModule,
     FormsModule,
     HttpModule,
-    routing
+    routing,
+    InfiniteScrollModule
   ],
   providers: [appRoutingProviders],
   bootstrap: [AppComponent]

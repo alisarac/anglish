@@ -10,6 +10,7 @@ export class AppComponent {
   hw ="subtitle";
   count: number = 0
   public hwClass = 'special';
+  public form: any = {};
 
   sayHello() {
       console.log('Hi!');
