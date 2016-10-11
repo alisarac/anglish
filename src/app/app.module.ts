@@ -1,8 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { InfiniteScrollModule } from 'angular2-infinite-scroll';
+import { PolymerElement } from '@vaadin/angular2-polymer';
 
 import { AppComponent } from './app.component';
 import { routing, appRoutingProviders }  from './app.routing';
@@ -17,7 +18,12 @@ import { LoginComponent } from './pages/login/login.component';
     UserBlockComponent,
     HomeComponent,
     SignupComponent,
-    LoginComponent
+    LoginComponent,
+    PolymerElement('vaadin-combo-box'),
+    PolymerElement('paper-input'),
+    PolymerElement('iron-icon'),
+    PolymerElement('paper-fab'),
+    PolymerElement('paper-slider')
   ],
   imports: [
     BrowserModule,
@@ -27,6 +33,7 @@ import { LoginComponent } from './pages/login/login.component';
     InfiniteScrollModule
   ],
   providers: [appRoutingProviders],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }

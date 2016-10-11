@@ -1,0 +1,23 @@
+{
+  "name": "anglish",
+  "description": "testing angular 2",
+  "main": "",
+  "authors": [
+    "Ali Sarac <alisarac@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/alisarac/anglish",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "paper-elements": "^1.0.7",
+    "vaadin-combo-box": "^1.1.5",
+    "iron-elements": "PolymerElements/iron-elements#^1.0.10",
+    "vaadin-icons": "^1.0.2"
+  }
+}

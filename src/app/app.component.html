@@ -4,6 +4,23 @@
 <p>{{hw}}</p>
 <input type="text" [(ngModel)]="count">
 <button [class]="hwClass" (click)="sayHello()">Say Hi!</button>
+<h1>{{title}}</h1>
+<vaadin-combo-box [label]="myLabel" [(value)]="myValue" [items]="myItems"></vaadin-combo-box>
+<paper-input [(value)]="myValue"></paper-input>
+<paper-input label="this label floats after typing"></paper-input>
+<paper-input label="this label is always floating" always-float-label></paper-input>
+<paper-input label="this input requires letters only" auto-validate pattern="[a-zA-Z]{1,3}" error-message="letters only!"></paper-input>
+<paper-input label="total" type="number">
+  <div prefix>$</div>
+</paper-input>
+<paper-input label="username" id="inputWithButton">
+  <iron-icon icon="icons:mail" prefix></iron-icon>
+  <div suffix>@email.com</div>
+  <paper-icon-button suffix onclick="clearInput()" icon="clear" alt="clear" title="clear">
+  </paper-icon-button>
+</paper-input>
+<paper-fab noink icon="places:spa" title="heart"></paper-fab>
+<paper-slider min="10" max="200" value="110" [(ngModel)]="form.km" (change)="kmChanged()"></paper-slider>
 <h1>Angular Router</h1>
 <nav>
   <a routerLink="/" routerLinkActive="active">Home</a>
